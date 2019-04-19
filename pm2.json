@@ -1,0 +1,8 @@
+{
+  "name": "bereg-irkuta",
+  "script": "app.js",
+  "instances": "max",
+  "env_production": {
+    "NODE_ENV": "production"
+  }
+}
