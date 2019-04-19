@@ -3197,9 +3197,7 @@ button:disabled,
 }
 
 #sidebar > .inner > * {
-  border-bottom: solid 2px rgba(210, 215, 217, 0.75);
   margin: 0 0 3.5em 0;
-  padding: 0 0 3.5em 0;
 }
 
 #sidebar > .inner > * > :last-child {
@@ -3469,7 +3467,6 @@ button:disabled,
 }
 
 #banner .image img {
-  height: 100%;
   -moz-object-fit: cover;
   -webkit-object-fit: cover;
   -ms-object-fit: cover;

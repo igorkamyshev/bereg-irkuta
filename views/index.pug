@@ -1,6 +1,20 @@
 extends _layout.pug
 
-//- block content
-//-   h1
-//-     | #{name}
-//-     small #{tagline}
+block content
+  section(id="banner")
+    div(class="content")
+      header
+        h1 #{name}
+        p #{tagline}
+
+      each item in description
+        p #{item}
+
+    span(class="image object")
+      img(src=`${logo}` alt=`${name}`)
+
+  section
+    header(class="major")
+      h2 Последние новости
+    div(class="posts")
+      //- TODO: add last news

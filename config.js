@@ -8,6 +8,8 @@ const Prismic = require('prismic-javascript')
 const PrismicDOM = require('prismic-dom')
 
 const PrismicConfig = require('./prismic-configuration')
+const { fetchAbout } = require('./content/fetchAbout')
+const { fetchContacts } = require('./content/fetchContacts')
 
 module.exports = (() => {
   const app = express()
@@ -43,6 +45,24 @@ module.exports = (() => {
         next(error.message)
       })
   })
+
+  app.show = (pathname, name, getContext = () => Promise.resolve({})) => {
+    const render = async (req, res) => {
+      const [aboutData, contactsData, context] = await Promise.all([
+        fetchAbout(req.prismic.api),
+        fetchContacts(req.prismic.api),
+        getContext(req),
+      ])
+
+      res.render(name, {
+        ...aboutData,
+        ...contactsData,
+        ...context,
+      })
+    }
+
+    app.get(pathname, render)
+  }
 
   return app
 })()

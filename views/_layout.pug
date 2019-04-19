@@ -9,5 +9,39 @@ html
       div(id="main")
         div(class="inner")
           header(id="header")
-            a(href="index.html" class="logo")
-              strong Берег Иркута
+            a(href="/" class="logo")
+              strong #{name}
+
+          block content
+      
+      div(id="sidebar")
+        div(class="inner")
+          nav(id="menu")
+            header(class="major")
+              h2 Навигация
+            ul
+              li
+                a(href="/") Главная
+              li
+                a(href="/news") Новости
+              li
+                a(href="/articles") Библиотека
+              li
+                a(href="/docs") Документы
+              li
+                a(href="/photos")  Фотографии
+
+          section
+            header(class="major")
+              h2 Контакты
+            ul(class="contact")
+              li(class="fa-envelope-o")
+                a(href=`mailto:${email}`) #{email}
+              li(class="fa-phone") #{phone}
+              li(class="fa-home") #{address}
+
+          footer(id="footer")
+            p(class="copyright")
+              | &copy; #{name} <br />
+              | Development: <a href="https://kamyshev.me">Igor Kamyshev</a> <br />
+              | Design: <a href="https://html5up.net/">HTML5 UP</a>
