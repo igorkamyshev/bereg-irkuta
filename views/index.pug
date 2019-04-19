@@ -1,5 +1,7 @@
 extends _layout.pug
 
+include ./blocks/new.pug
+
 block content
   section(id="banner")
     div(class="content")
@@ -17,4 +19,5 @@ block content
     header(class="major")
       h2 Последние новости
     div(class="posts")
-      //- TODO: add last news
+      each item in news
+        +new(item)

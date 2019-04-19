@@ -1,0 +1,9 @@
+mixin new(content)
+  article
+    a(href=`/news/${content.id}`, class="image")
+      img(src=`${content.preview}`, alt=`${content.title}` )
+    h3 #{content.title}
+    p #{content.description}
+    ul(class="actions")
+      li
+        a(href=`/news/${content.id}`, class="button") Подробнее
