@@ -1,9 +1,9 @@
 const Prismic = require('prismic-javascript')
 
-module.exports.fetchNews = async api => {
+module.exports.fetchNews = async (api, limit) => {
   const { results } = await api.query(
     Prismic.Predicates.at('document.type', 'news'),
-    { orderings: '[document.first_publication_date desc]' },
+    { orderings: '[document.first_publication_date desc]', pageSize: limit },
   )
 
   const news = results.map(({ data: { title, photos, content }, id }) => ({

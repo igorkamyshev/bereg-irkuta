@@ -1,5 +1,3 @@
-const { take } = require('lodash')
-
 const Onboarding = require('./onboarding')
 const app = require('./config')
 const { fetchNews } = require('./content/fetchNews')
@@ -7,9 +5,9 @@ const { fetchNews } = require('./content/fetchNews')
 const PORT = app.get('port')
 
 app.show('/', 'index', async req => {
-  const news = await fetchNews(req.prismic.api)
+  const news = await fetchNews(req.prismic.api, 2)
 
-  return { news: take(news, 3) }
+  return { news }
 })
 
 app.listen(PORT, () => {
