@@ -1,0 +1,11 @@
+mixin card(content, link)
+  article
+    if (content.preview)
+      a(href=`${link}/${content.id}`, class="image")
+        img(src=`${content.preview}`, alt=`${content.title}` )
+    else
+    h3 #{content.title}
+    p #{content.description}
+    ul(class="actions")
+      li
+        a(href=`${link}/${content.id}`, class="button") Подробнее

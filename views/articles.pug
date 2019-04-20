@@ -6,10 +6,9 @@ include ./blocks/pagination.pug
 block content
   section
     header(class="major")
-      h2 Новости
-        </header>
+      h2 Библиотека
     div(class="posts")
-      each item in news
-        +card(item, "/news")
+      each item in articles
+        +card(item, "/articles")
 
-  +pagination(page, totalPages, "/news")
+  +pagination(page, totalPages, "/articles")

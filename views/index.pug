@@ -1,6 +1,6 @@
 extends _layout.pug
 
-include ./blocks/new.pug
+include ./blocks/card.pug
 
 block content
   section(id="banner")
@@ -20,4 +20,4 @@ block content
       h2 Последние новости
     div(class="posts")
       each item in news
-        +new(item)
+        +card(item, "/news")

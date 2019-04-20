@@ -1,6 +1,7 @@
 const Onboarding = require('./onboarding')
 const app = require('./config')
 const { fetchNews } = require('./content/fetchNews')
+const { fetchArticles } = require('./content/fetchArticles')
 
 const PORT = app.get('port')
 
@@ -17,6 +18,13 @@ app.show('/news', 'news', async req => {
   const { news, totalPages } = await fetchNews(req.prismic.api, 2, page)
 
   return { news, page, totalPages }
+})
+
+app.show('/articles', 'articles', async req => {
+  const page = getPage(req)
+  const { articles, totalPages } = await fetchArticles(req.prismic.api, 2, page)
+
+  return { articles, page, totalPages }
 })
 
 app.listen(PORT, () => {
