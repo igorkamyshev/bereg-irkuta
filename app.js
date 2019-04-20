@@ -1,9 +1,14 @@
 const Onboarding = require('./onboarding')
 const app = require('./config')
+const { bundle } = require('./bundle')
 const { fetchNews } = require('./content/fetchNews')
 const { fetchArticles } = require('./content/fetchArticles')
 
 const PORT = app.get('port')
+const dev = process.env.NODE_END !== 'production'
+if (dev) {
+  bundle()
+}
 
 const getPage = req => parseInt(req.query.page || '1', 10)
 
