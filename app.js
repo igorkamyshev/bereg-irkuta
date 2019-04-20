@@ -24,7 +24,7 @@ app.show('/', 'index', async req => {
 
 app.show('/news', 'news', async req => {
   const page = getPage(req)
-  const { news, totalPages } = await fetchNews(req.prismic.api, 2, page)
+  const { news, totalPages } = await fetchNews(req.prismic.api, 12, page)
 
   return { news, page, totalPages }
 })
@@ -38,7 +38,11 @@ app.show('/news/:id', 'new', async req => {
 
 app.show('/articles', 'articles', async req => {
   const page = getPage(req)
-  const { articles, totalPages } = await fetchArticles(req.prismic.api, 2, page)
+  const { articles, totalPages } = await fetchArticles(
+    req.prismic.api,
+    12,
+    page,
+  )
 
   return { articles, page, totalPages }
 })
