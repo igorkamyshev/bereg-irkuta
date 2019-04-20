@@ -1,0 +1,15 @@
+extends _layout.pug
+
+include ./blocks/new.pug
+include ./blocks/pagination.pug
+
+block content
+  section
+    header(class="major")
+      h2 Новости
+        </header>
+    div(class="posts")
+      each item in news
+        +new(item)
+
+  +pagination(page, totalPages, "/news")

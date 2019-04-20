@@ -1,0 +1,25 @@
+mixin pagination(active, last, link)
+  if (last !== 1)
+    ul(class="pagination")
+      if (active === 1)
+        li
+          span(class="button disabled") Назад
+      else
+        li
+          a(href=`${link}?page=${active - 1}`, class="button") Назад
+      
+      - for (var index = 1; index <= last; index++)
+        if (index === active)
+          li
+            a(href=`${link}?page=${index}`, class="page active") #{index}
+        else
+          li
+            a(href=`${link}?page=${index}`, class="page") #{index}
+
+      if (active === last)
+        li
+          span(class="button disabled") Дальше
+      else
+        li
+          a(href=`${link}?page=${active + 1}`, class="button") Дальше
+  else
