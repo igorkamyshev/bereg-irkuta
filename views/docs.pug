@@ -1,0 +1,16 @@
+extends _layout.pug
+
+include ./blocks/card.pug
+include ./blocks/pagination.pug
+
+block content
+  section
+    header(class="major")
+      h2 Документы
+    div(class="posts")
+      each item in docs
+        article
+          h3 #{item.title}
+          ul(class="actions")
+            li
+              a(href=`${item.url}`, class="button") Скачать
