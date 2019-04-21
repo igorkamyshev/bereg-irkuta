@@ -6,6 +6,7 @@ const errorHandler = require('errorhandler')
 const path = require('path')
 const Prismic = require('prismic-javascript')
 const PrismicDOM = require('prismic-dom')
+const compression = require('compression')
 
 const PrismicConfig = require('./prismic-configuration')
 const { fetchAbout } = require('./content/fetchAbout')
@@ -23,6 +24,7 @@ module.exports = (() => {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(methodOverride())
   app.use(express.static(path.join(__dirname, 'public')))
+  app.use(compression())
 
   app.use(errorHandler())
 
