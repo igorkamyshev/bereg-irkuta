@@ -23,8 +23,8 @@ module.exports = (() => {
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(methodOverride())
-  app.use(express.static(path.join(__dirname, 'public')))
   app.use(compression())
+  app.use(express.static(path.join(__dirname, 'public')))
 
   app.use(errorHandler())
 
