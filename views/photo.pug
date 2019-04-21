@@ -1,0 +1,11 @@
+extends _layout.pug
+
+block content
+  section
+    header(class="major")
+      h2 #{item.title}
+      each photo in item.photos
+        span(class="image main")
+          img(src=`${photo.url}`, alt=`${photo.alt}`)
+
+    | !{item.content}
