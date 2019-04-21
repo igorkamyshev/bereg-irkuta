@@ -6,8 +6,10 @@ RUN apk add --no-cache yarn
 WORKDIR /usr/src/app
 COPY package.json ./
 COPY yarn.lock ./
-RUN yarn install --prod
+RUN yarn install
+
 COPY . .
+RUN yarn build
 
 EXPOSE 3000
 

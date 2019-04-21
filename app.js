@@ -1,6 +1,5 @@
 const Onboarding = require('./onboarding')
 const app = require('./config')
-const { bundle } = require('./bundle')
 const { fetchNew } = require('./content/fetchNew')
 const { fetchNews } = require('./content/fetchNews')
 const { fetchDocs } = require('./content/fetchDocs')
@@ -10,7 +9,9 @@ const { fetchArticles } = require('./content/fetchArticles')
 
 const PORT = app.get('port')
 const dev = process.env.NODE_END !== 'production'
+
 if (dev) {
+  const { bundle } = require('./bundle')
   bundle()
 }
 
@@ -25,7 +26,7 @@ app.show('/', 'index', async req => {
 
 app.show('/news', 'news', async req => {
   const page = getPage(req)
-  const { news, totalPages } = await fetchNews(req.prismic.api, 12, page)
+  const { news, totalPages } = await fetchNews(req.prismic.api, 6, page)
 
   return { news, page, totalPages }
 })
