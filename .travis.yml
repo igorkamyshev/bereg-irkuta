@@ -11,3 +11,10 @@ before_deploy:
 - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"	
 - docker tag "$IMAGE_NAME" "$DOCKER_USERNAME/${IMAGE_NAME}:latest"	
 - docker push "$DOCKER_USERNAME/${IMAGE_NAME}:latest"
+deploy:	
+  skip_cleanup: true	
+  provider: script	
+  script:	
+  - chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key $SERVER_USER@$SERVER_HOST "cd web/bereg-irkuta && docker-compose pull && docker-compose down && docker-compose up -d"	
+  on:	
+    branch: master
