@@ -1,0 +1,15 @@
+extends _layout.pug
+
+include ./blocks/card.pug
+include ./blocks/pagination.pug
+
+block content
+  section
+    header(class="major")
+      h2 Фотоальбомы
+        </header>
+    div(class="posts")
+      each item in albums
+        +card(item, "/photos")
+
+  +pagination(page, totalPages, "/photos")

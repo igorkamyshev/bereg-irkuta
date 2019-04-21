@@ -4,6 +4,7 @@ const { bundle } = require('./bundle')
 const { fetchNew } = require('./content/fetchNew')
 const { fetchNews } = require('./content/fetchNews')
 const { fetchDocs } = require('./content/fetchDocs')
+const { fetchAlbums } = require('./content/fetchAlbums')
 const { fetchArticle } = require('./content/fetchArticle')
 const { fetchArticles } = require('./content/fetchArticles')
 
@@ -58,6 +59,13 @@ app.show('/docs', 'docs', async req => {
   const { docs } = await fetchDocs(req.prismic.api)
 
   return { docs }
+})
+
+app.show('/photos', 'photos', async req => {
+  const page = getPage(req)
+  const { albums, totalPages } = await fetchAlbums(req.prismic.api, 12, page)
+
+  return { albums, page, totalPages }
 })
 
 app.listen(PORT, () => {
